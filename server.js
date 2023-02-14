@@ -26,6 +26,13 @@ app.get('/names', function(req, res) {
   })
 })
 
+const getAllObjectFaketable2 = 'select * from faketable2;' 
+app.get('/faketable2', function(req, res) {
+  pool.query(getAllObjectFaketable2,(error, result) => {
+    res.json(result.rows)
+  })
+})
+
 let port = 5000;
 app.listen( port, function () {
   console.log("Your app is listening on port " + port);
