@@ -28,7 +28,7 @@ app.get('/names', function(req, res) {
 })
 
 //function to see all the elements of the Faketable2
-const getAllObjectFaketable2 = 'select * from faketable2;' 
+const getAllObjectFaketable2 = 'select date_event::date,* from faketable2;' 
 app.get('/faketable2', function(req, res) {
   pool.query(getAllObjectFaketable2,(error, result) => {
     res.json(result.rows)
