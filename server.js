@@ -20,15 +20,17 @@ app.use(bodyParser.json());
 //})
 
 //function to see all the elements of the Faketable
-const getAllObject = 'select * from faketable;' 
+const getAllObject = 'select * from faketable;'
 app.get('/names', function(req, res) {
-  pool.query(getAllObject,(error, result) => {
+  
+  pool.query(getAllObject,(error, result) => 
+  {
     res.json(result.rows)
   })
 })
 
 //function to see all the elements of the Faketable2
-const getAllObjectFaketable2 = 'select date_event::date,* from faketable2;' 
+const getAllObjectFaketable2 = `select name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2;`
 app.get('/faketable2', function(req, res) {
   pool.query(getAllObjectFaketable2,(error, result) => {
     res.json(result.rows)
