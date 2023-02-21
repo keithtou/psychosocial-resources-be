@@ -37,6 +37,18 @@ app.get('/faketable2', function(req, res) {
   })
 })
 
+
+//function to get just a single event from faketable2
+app.get('/faketable2/:singleEventId', function(req, res) {
+  const singleEventId = req.params.singleEventId;
+
+  let query = `Select name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2  WHERE id=$1;`
+  pool
+    .query(query, [singleEventId])
+    .then((result)=> res.json(result.rows))
+    .catch((e) => console.error(e));
+})
+
 //function to add items to table FakeTable2
 //TODO Validate name is Unique 
 const addObjectToFaketable2 = 'insert into faketable2 (name, title, description, address, city, country, date_event, hour_event, links) values($1,$2,$3,$4,$5,$6,$7,$8,$9);'
