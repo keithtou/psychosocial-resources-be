@@ -30,7 +30,7 @@ app.get('/names', function(req, res) {
 })
 
 //function to see all the elements of the Faketable2
-const getAllObjectFaketable2 = `select name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2;`
+const getAllObjectFaketable2 = `select id, name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2;`
 app.get('/faketable2', function(req, res) {
   pool.query(getAllObjectFaketable2,(error, result) => {
     res.json(result.rows)
@@ -42,7 +42,7 @@ app.get('/faketable2', function(req, res) {
 app.get('/faketable2/:singleEventId', function(req, res) {
   const singleEventId = req.params.singleEventId;
 
-  let query = `Select name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2  WHERE id=$1;`
+  let query = `Select id, name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2  WHERE id=$1;`
   pool
     .query(query, [singleEventId])
     .then((result)=> res.json(result.rows))
