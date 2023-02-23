@@ -49,6 +49,15 @@ app.get('/faketable2/:singleEventId', function(req, res) {
     .catch((e) => console.error(e));
 })
 
+//function to see all the elements of the TableOcc
+const getAllObjectTabbleOcc = `select * from table_occ;`
+app.get('/TableOcc', function(req, res) {
+  pool
+  .query(getAllObjectTabbleOcc)
+  .then((result) => res.json(result.rows))
+  .catch(error => console.error(error))
+  })
+
 //function to add items to table FakeTable2
 //TODO Validate name is Unique 
 const addObjectToFaketable2 = 'insert into faketable2 (name, title, description, address, city, country, date_event, hour_event, links) values($1,$2,$3,$4,$5,$6,$7,$8,$9);'
