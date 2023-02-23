@@ -58,6 +58,17 @@ app.get('/TableOcc', function(req, res) {
   .catch(error => console.error(error))
   })
 
+  //function to get just one event:
+  app.get('/tableOcc/:singleEventId', function(req, res) {
+    const singleEventId = req.params.singleEventId;
+  
+    let query = `Select * from table_occ  WHERE id=$1;`
+    pool
+      .query(query, [singleEventId])
+      .then((result)=> res.json(result.rows))
+      .catch((e) => console.error(e));
+  })
+
 //function to add items to table FakeTable2
 //TODO Validate name is Unique 
 const addObjectToFaketable2 = 'insert into faketable2 (name, title, description, address, city, country, date_event, hour_event, links) values($1,$2,$3,$4,$5,$6,$7,$8,$9);'
