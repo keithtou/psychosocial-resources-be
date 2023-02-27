@@ -1,0 +1,11 @@
+#This is a TOML document
+
+title = "TOML Migramind"
+
+[database]
+user_db = 'postgres'
+host_db = 'localhost'
+database_db = 'migramind_a'
+password_db = 'postgres'
+port_dp = [5432]
+
