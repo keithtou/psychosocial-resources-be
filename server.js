@@ -2,24 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const {Pool} = require('pg');
 const bodyParser = require("body-parser");
-// const fs = require('fs');
-// const toml = require('toml');
-
-// const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
-
-// //Values to use database
-// const user_db = config.user_db;
-// const host_db = config.host_db;
-// const database_db = config.database_db;
-// const password_db = config.password_db;
-// const port_db = config.port_db
+require("dotenv").config();
 
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'migramind_a',
-    password: 'postgres',
-    port: 5432
+    user: process.env.PG_USER,
+    host: process.env.PG_HOST,
+    database: process.env.PG_DATABASE,
+    password: process.env.PG_PASSWORD,
+    port: process.env.PG_PORT
 });
 
 const app = express();
