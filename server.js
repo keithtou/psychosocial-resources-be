@@ -20,6 +20,26 @@ app.use(bodyParser.json());
 //    response.send(random)
 //})
 
+const getTableInfo = 'select * from tableInfo;'
+app.get('/getHelp', function(req, res) {
+  
+  pool.query(getTableInfo,(error, result) => 
+  {
+    res.json(result.rows)
+  })
+})
+
+app.get('/getHelp/:singleEventId', function(req, res) {
+  const singleEventId = req.params.singleEventId;
+
+  let query = 'select * from tableInfo WHERE id=$1;'
+  pool
+    .query(query, [singleEventId])
+    .then((result)=> res.json(result.rows))
+    .catch((e) => console.error(e));
+})
+
+
 //function to see all the elements of the Faketable
 const getAllObject = 'select * from faketable;'
 app.get('/names', function(req, res) {
@@ -31,12 +51,12 @@ app.get('/names', function(req, res) {
 })
 
 //function to see all the elements of the Faketable2
-const getAllObjectFaketable2 = `select id, name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2;`
+/* const getAllObjectFaketable2 = `select id, name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2;`
 app.get('/faketable2', function(req, res) {
   pool.query(getAllObjectFaketable2,(error, result) => {
     res.json(result.rows)
   })
-})
+}) */
 
 
 //function to get just a single event from faketable2
