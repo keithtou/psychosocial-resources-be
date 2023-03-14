@@ -90,6 +90,24 @@ app.get('/TableOcc', function(req, res) {
       .catch((e) => console.error(e));
   })
 
+//function to search events:
+app.get('/searchEvent', async(req, res) => {
+  try {
+
+    const { eventQuery } = req.query;
+
+    const searchEvent = await pool.query(
+      "SELECT * FROM tableinfo WHERE title || description || company ILIKE $1", 
+    [`%${eventQuery}%`]
+    );
+
+    res.json(searchEvent.rows);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+
 //function to add items to table FakeTable2
 //TODO Validate name is Unique 
 const addObjectToFaketable2 = 'insert into faketable2 (name, title, description, address, city, country, date_event, hour_event, links) values($1,$2,$3,$4,$5,$6,$7,$8,$9);'
