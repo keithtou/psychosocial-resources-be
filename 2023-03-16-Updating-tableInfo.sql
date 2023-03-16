@@ -4,7 +4,7 @@ drop table if exists tableinfo
 
 create table tableInfo (
 ID SERIAL primary key,
-Company VARCHAR(200) NOT NULL,
+Company VARCHAR(200),
 TITLE VARCHAR(200),
 DESCRIPTION VARCHAR(1000),
 URL_BASIC VARCHAR(80),
@@ -17,10 +17,12 @@ EMAIL VARCHAR(100),
 PHONE VARCHAR(140),
 TYPE_OF_COMPANY VARCHAR(100),
 attention_schedule varchar(150),
-code_photo varchar(500)
+code_photo varchar(500),
+latitud float NULL,
+longitud float NULL
 );
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo, latitud, longitud) 
 values(
 'Ajuntament barcelona CAT ',
 'Practical information for living in the city of Barcelona',
@@ -36,9 +38,11 @@ values(
 'Public and Free',
 'Monday, Tuesday, Wednesday and Friday from 08:30 a.m. to 2:30 p.m
  Thursday from 08.30 h to 18.30 h',
-'https://ajuntament.barcelona.cat/normativagrafica/imatges/Merxandatge-01-RGB.jpg');
+'https://ajuntament.barcelona.cat/normativagrafica/imatges/Merxandatge-01-RGB.jpg',
+41.38570096144183, 
+2.129751658428744);
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule,code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule,code_photo,latitud,longitud) 
 values(
 'Umbral red asistencial "psi"',
 'Asistance network, made up of psychoanalysts, clinical psychologists, psychiatrists and collaborators from other areas to work on current malaise both in culture and individually.',
@@ -53,9 +57,11 @@ values(
 'Telephone: 934 33 52 33',
 'Private not free',
 'fees agreed with the client',
-'https://umbral-red.org/images/logo/logo_home.png');
+'https://umbral-red.org/images/logo/logo_home.png',
+41.41394541548893, 
+2.1690573491008216);
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo,latitud,longitud) 
 values(
 'Parc Sanitari Sant Joan de Déu PSSJD',
 'The General Hospital of Sant Boi and Sant Joan de Déu Mental Health Services',
@@ -70,9 +76,11 @@ values(
 'TELEPHONE 93 640 63 50',
 'Free',
 'Tuesday from 16:00 to 18:00 p.m.',
-'https://csmc.mafs.cat/wp-content/uploads/2019/05/Parc_Sanitari_Sant_Joan_de_Deu_logo.jpg');
+'https://csmc.mafs.cat/wp-content/uploads/2019/05/Parc_Sanitari_Sant_Joan_de_Deu_logo.jpg',
+41.38379416769641,
+2.1788357547385213);
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company,attention_schedule, code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company,attention_schedule, code_photo, latitud, longitud) 
 values(
 'Babel Foundation - Attention to migrants',
 'Private, independent, non-profit charity foundation for migrants',
@@ -80,17 +88,19 @@ values(
 'https://www.babelpuntodeencuentro.org/',
 'The Puentes project is intended to offer reception and accompaniment to people who have recently arrived in our society or who at some stage of their lives have experienced a migratory process.',
 'https://www.babelpuntodeencuentro.org/proyecto/proyecto-puentes-4/#acceso',
-'Carrer dels Salvador 4, 4º, 08001 Barcelona',
+'Carrer dels Salvador 4, 4º, 08001',
 'Barcelona',
 'Spain',
 'info@babelpuntodeencuentro.org gestion@babelpuntodeencuentro.org',
 'telephone : +34 93 295 57 93 / +34 629 577 430',
 'Free for people without resources. €20 per session for those who can contribute.',
 'Monday and Wednesday: 10-14h and 15-19h Tuesday and Thursday: 10-14h and 15-18h Friday: 10-14h',
-'https://media.licdn.com/dms/image/C4D0BAQHyKc8Vw1yPbw/company-logo_200_200/0/1601637087258?e=2147483647&v=beta&t=suppI2_LpvhbZM7pZrutgzVrs2RwEt01PC0640bVGHc');
+'https://media.licdn.com/dms/image/C4D0BAQHyKc8Vw1yPbw/company-logo_200_200/0/1601637087258?e=2147483647&v=beta&t=suppI2_LpvhbZM7pZrutgzVrs2RwEt01PC0640bVGHc',
+41.380886875202656, 
+2.1638073952204273);
 
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule,code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule,code_photo,latitud,longitud) 
 values(
 'Sant Pere Claver - Fundació Sanitària SPCSALUT',
 'Welcome to the Sant Pere Claver Group, entities with a social commitment.',
@@ -105,9 +115,11 @@ values(
 'Telephone 934 42 39 03',
 'Free',
 'Tuesday from 9 a.m. to 7 p.m. Wednesday from 9 a.m. to 2 p.m. Thursday from 9 a.m. to 4 p.m.',
-'https://www.spcsalut.org/img/logoFS.png');
+'https://www.spcsalut.org/img/logoFS.png',
+41.37310563863906, 
+2.1733591393968186);
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo,latitud,longitud) 
 values(
 'Association of Systemic Transcultural Psychotherapy Terapias Sin Fronteras',
 'Psychological Care for Migrants and People of Foreign Origin, Systemic Transcultural Model Training',
@@ -122,10 +134,12 @@ values(
 'Thelephone :914 299 756 - 653 345 616',
 'Free',
 'Monday and Tuesday: 4:00 p.m. to 7:00 p.m. Wednesday: 4:00 p.m. to 6:00 p.m. Thursday: 15:00 to 17:00',
-'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800,h_172/https://terapiasinfronteras.com/wp-content/uploads/2020/07/lolo-tsfFinal.png');
+'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_800,h_172/https://terapiasinfronteras.com/wp-content/uploads/2020/07/lolo-tsfFinal.png',
+NULL,
+NULL);
 
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo,latitud,longitud) 
 values(
 'Conexus',
 'The CONEXUS Psychosocial Care, Training and Research Association',
@@ -140,9 +154,11 @@ values(
 'Telephone : (+34) 93 217 16 46',
 'Free',
 'From Monday to Friday. from 09:00 to 14:00 and from 15:00 to 20:00',
-'https://conexus.cat/wp-content/uploads/2021/10/conexus-logo-header.png');
+'https://conexus.cat/wp-content/uploads/2021/10/conexus-logo-header.png',
+41.39633048525429, 
+2.171945466385684);
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule ,code_photo,latitud,longitud) 
 values(
 'Equality ',
 'Equality is a non-profit organization, we strongly believe that mental health care should be accessible to all members of society.',
@@ -157,9 +173,11 @@ values(
 'WhatsApp +34 633 05 69 40',
 'Free',
 'does not specift',
-'https://iguality.org/wp-content/uploads/2022/08/Logos-wide1-2048x683.png');
+'https://iguality.org/wp-content/uploads/2022/08/Logos-wide1-2048x683.png',
+null,
+null);
 
-insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company,attention_schedule , code_photo) 
+insert into tableInfo (company, title, description, url_basic, schedule_description, url_schedule, address, provincie, country, email, phone, type_of_company,attention_schedule , code_photo, latitud, longitud) 
 values(
 'Associació Exil',
 'Asil.cat, a network of organizations in defense of the right to asylum in Catalonia and the rights of people who have suffered forced displacement.',
@@ -174,6 +192,8 @@ values(
 'Telephone: 910 474 444',
 'Free',
 'Monday to Friday',
-'http://asil.cat/wp-content/uploads/2015/06/asil-cat-logo.png');
+'http://asil.cat/wp-content/uploads/2015/06/asil-cat-logo.png',
+41.407574731254144,
+2.1485664528921062);
 
-select * from tableinfo
+select * from tableinfo 
