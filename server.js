@@ -108,21 +108,23 @@ app.get('/searchEvent', async(req, res) => {
 });
 
 
-//function to add items to table FakeTable2
-//TODO Validate name is Unique 
-const addObjectToFaketable2 = 'insert into faketable2 (name, title, description, address, city, country, date_event, hour_event, links) values($1,$2,$3,$4,$5,$6,$7,$8,$9);'
-app.post('/faketable2', function(req, res){
-  let faketable2Name = req.body.name
-  let faketable2Title = req.body.title
-  let faketable2Description = req.body.description
-  let faketable2Address = req.body.address
-  let faketable2City = req.body.city
-  let faketable2Country = req.body.country
-  let faketable2DateEvent = req.body.date_event
-  let faketable2HourEvent = req.body.hour_event
-  let faketable2Links = req.body.links
-  let faketable2Array = [faketable2Name,faketable2Title,faketable2Description,faketable2Address,faketable2City,faketable2Country,faketable2DateEvent,faketable2HourEvent,faketable2Links]
-  pool.query(addObjectToFaketable2, faketable2Array, (error, result) => {
+//function to add items to table DB
+app.post('/getHelp', function(req, res){
+  const addObjectToDB = 'insert into tableInfo (company, title, description, url_basic, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12);'
+  let nameCompany = req.body.nameCompany
+  let addTitle = req.body.title
+  let addDescription = req.body.description
+  let addUrlBasic = req.body.urlBasic
+  let addUrlSchedule = req.body.urlSchedule
+  let addAddress = req.body.address
+  let addProvincie = req.body.provincie
+  let addCountry = req.body.country
+  let addEmail = req.body.email
+  let addPhone = req.body.numberPhone
+  let addTypeOfCompany = req.body.type
+  let addAttentionSchedule = req.body.attencionSchedule
+  let addInfoArray = [nameCompany,addTitle,addDescription,addUrlBasic,addUrlSchedule,addAddress,addProvincie,addCountry,addEmail,addPhone,addTypeOfCompany,addAttentionSchedule]
+  pool.query(addObjectToDB, addInfoArray, (error, result) => {
     if (error) {
       console.error(error);
       res.send('error adding information')
