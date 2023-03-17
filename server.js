@@ -16,9 +16,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-//app.get("/", function(request, response) {
-//    response.send(random)
-//})
 
 const getTableInfo = 'select * from tableInfo;'
 app.get('/getHelp', function(req, res) {
@@ -29,8 +26,9 @@ app.get('/getHelp', function(req, res) {
   })
 })
 
+//function to get just a single event from DB
 app.get('/getHelp/:singleEventId', function(req, res) {
-  const singleEventId = req.params.singleEventId;
+const singleEventId = req.params.singleEventId;
 
   let query = 'select * from tableInfo WHERE id=$1;'
   pool
@@ -38,57 +36,6 @@ app.get('/getHelp/:singleEventId', function(req, res) {
     .then((result)=> res.json(result.rows))
     .catch((e) => console.error(e));
 })
-
-
-//function to see all the elements of the Faketable
-const getAllObject = 'select * from faketable;'
-app.get('/names', function(req, res) {
-  
-  pool.query(getAllObject,(error, result) => 
-  {
-    res.json(result.rows)
-  })
-})
-
-//function to see all the elements of the Faketable2
-/* const getAllObjectFaketable2 = `select id, name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2;`
-app.get('/faketable2', function(req, res) {
-  pool.query(getAllObjectFaketable2,(error, result) => {
-    res.json(result.rows)
-  })
-}) */
-
-
-//function to get just a single event from faketable2
-app.get('/faketable2/:singleEventId', function(req, res) {
-  const singleEventId = req.params.singleEventId;
-
-  let query = `Select id, name, title, description, address, city, country, TO_CHAR(date_event :: DATE, 'yyyy-mm-dd'), hour_event, links from faketable2  WHERE id=$1;`
-  pool
-    .query(query, [singleEventId])
-    .then((result)=> res.json(result.rows))
-    .catch((e) => console.error(e));
-})
-
-//function to see all the elements of the TableOcc
-const getAllObjectTabbleOcc = `select * from table_occ;`
-app.get('/TableOcc', function(req, res) {
-  pool
-  .query(getAllObjectTabbleOcc)
-  .then((result) => res.json(result.rows))
-  .catch(error => console.error(error))
-  })
-
-  //function to get just one event:
-  app.get('/tableOcc/:singleEventId', function(req, res) {
-    const singleEventId = req.params.singleEventId;
-  
-    let query = `Select * from table_occ  WHERE id=$1;`
-    pool
-      .query(query, [singleEventId])
-      .then((result)=> res.json(result.rows))
-      .catch((e) => console.error(e));
-  })
 
 //function to search events:
 app.get('/searchEvent', async(req, res) => {
@@ -112,6 +59,7 @@ app.get('/searchEvent', async(req, res) => {
 app.post('/getHelp', function(req, res){
   const addObjectToDB = 'insert into tableInfo (company, title, description, url_basic, url_schedule, address, provincie, country, email, phone, type_of_company, attention_schedule) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12);'
   let nameCompany = req.body.nameCompany
+  console.log(req.body);
   let addTitle = req.body.title
   let addDescription = req.body.description
   let addUrlBasic = req.body.urlBasic
