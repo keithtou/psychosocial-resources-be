@@ -82,7 +82,11 @@ app.post('/getHelp', function(req, res){
   })
 })
 
-const port = process.env.PORT
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 5001;
+}
+
 app.listen( port, function () {
   console.log("Your app is listening on port " + port);
 });
