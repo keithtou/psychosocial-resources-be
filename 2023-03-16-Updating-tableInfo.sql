@@ -1,6 +1,6 @@
 create database migramind_a;
 
-drop table if exists tableinfo 
+drop table if exists tableinfo;
 
 create table tableInfo (
 ID SERIAL primary key,
