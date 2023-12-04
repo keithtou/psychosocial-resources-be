@@ -5,11 +5,11 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 const pool = new Pool({
-    user: process.env.PG_USER,
-    host: process.env.PG_HOST,
-    database: process.env.PG_DATABASE,
+    user: "postgres",
+    host: "db.czpzzkcnuidgyfljkuof.supabase.co",
+    database: "postgres",
     password: process.env.PG_PASSWORD,
-    port: process.env.PG_PORT
+    port: 5432,
 });
 
 const app = express();
